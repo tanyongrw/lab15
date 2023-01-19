@@ -1,21 +1,36 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-const int N = 5;
+template <typename T>
+void insertionSort(T d[],int N){
 
-void inputMatrix(double [][N]);
-
-void findLocalMax(const double [][N], bool [][N]);
-
-void showMatrix(const bool [][N]);
+for(int i = 1 ; i < N; i++)
+	{
+		for(int j = 0; j < i; j++)
+		{
+			if(d[i] > d[j])
+			{
+				T temp = d[i];
+				d[i] = d[j];
+				d[j] = temp;
+			}
+		}
+	 cout << "Pass " << i << ":";
+		for (int k = 0; k < N ; k++){
+            cout << d[k] << " ";
+        }
+	 cout << "\n";
+	}
+}
 
 int main(){
-	double A[N][N]; 
-	bool B[N][N]; 
-	cout << "Input the matrix.....\n";
-	inputMatrix(A);
-	findLocalMax(A,B);
-	cout << "Result is \n";
-	showMatrix(B);
-	return 0;
+	int a[10] = {12,25,30,44,2,0,4,7,55,25};
+	cout << "Input Array:";
+	for(int i = 0; i < 10; i++) cout << a[i] << " ";
+	cout << "\n\n";
+	
+	insertionSort(a,10);
+	
+	cout << "\nSorted Array:";
+	for(int i = 0; i < 10; i++) cout << a[i] << " ";	
 }
